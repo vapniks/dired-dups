@@ -1,0 +1,74 @@
+* Library Information
+ Readme.org --- Find duplicate files and display them in a dired buffer
+
+ - Filename :: [[file:dired-dups.el][dired-dups.el]]
+ - Description :: Find duplicate files and display them in a dired buffer
+ - Author :: Joe Bloggs <vapniks@yahoo.com>
+ - Maintainer :: Joe Bloggs <vapniks@yahoo.com>
+ - Copyleft (Ↄ) 2013, Joe Bloggs, all rites reversed.
+ - Created :: 2013-05-12 01:30:22
+ - Version :: 0.1
+ - Last-Updated :: 2013-05-12 01:30:22
+ -           By :: Joe Bloggs
+ - URL :: https://github.com/vapniks/dired-dups
+ - Keywords :: unix
+ - Compatibility :: GNU Emacs 24.3.1
+Package-Requires:  
+
+* Possible Dependencies
+
+
+
+
+; This file is NOT part of GNU Emacs
+
+; License
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3, or (at your option)
+any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; see the file COPYING.
+ - If not, see <http :://www.gnu.org/licenses/>.
+
+; Commentary: 
+
+Bitcoin donations gratefully accepted: 
+
+How to create documentation and distribute package:
+
+ -     1) Generate a bitcoin address for donations with shell command :: bitcoin getaccountaddress dired-dups
+ -        and place address after "Commentary ::" above.
+    2) Use org-readme-top-header-to-readme to create initial Readme.org file.
+    3) Use M-x auto-document to insert descriptions of commands and documents
+    4) Create documentation in the Readme.org file:
+       - Use org-mode features for structuring the data.
+       - Divide the commands into different categories and create headings
+         containing org lists of the commands in each category.
+       - Create headings with any other extra information if needed (e.g. customization).
+    5) In this buffer use org-readme-to-commentary to fill Commentary section with
+       documentation from Readme.org file.
+    6) Make any necessary adjustments to the documentation in this file (e.g. remove the installation
+       and customization sections added in previous step since these should already be present).
+    7) Use org-readme-marmalade-post and org-readme-convert-to-emacswiki to post
+       the library on Marmalade and EmacsWiki respectively.
+
+* Commentary
+Bitcoin donations gratefully accepted: 12k9zUo9Dgqk8Rary2cuzyvAQWD5EAuZ4q
+
+This library provides the command `dired-find-duplicates' which searches a directory for
+duplicates of the marked files in the current dired buffer.
+
+* Installation
+
+ - If you have [[http://www.marmalade-repo.org/][marmalade-repo.org]], this dired-dups is part of the emacs packages you can install.  
+   Just type M-x package-install dired-dups marmalade 
+ - Otherwise download the library from here Lisp:dired-dups, and put it in a directory in the emacs load path, like ~/.emacs.d
+ - Add (require 'dired-dups) in your ~/.emacs file
