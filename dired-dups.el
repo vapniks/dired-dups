@@ -85,7 +85,7 @@
 
 (eval-when-compile (require 'cl))
 
-(defun* dired-find-duplicates (files dir)
+(defun dired-find-duplicates (files dir)
   "Find duplicates of files and put them in a dired buffer.
 FILES is a list of files which will be compared. DIR is the directory
 which will be checked for duplicates of any of the files in the list.
@@ -113,13 +113,13 @@ duplicate files will be marked for deletion instead of the originals."
 	(duplicated-matched-files nil))
     
     ;; kill buffer *duplicated files* if it exists
-    (dired-ext-kill-buffer "*duplicated files*")
+    (dired-dups-kill-buffer "*duplicated files*")
     
     (dired-do-shell-command "md5sum" nil files)
-    (let ((marked-pair (dired-ext-md5-file-pair))
+    (let ((marked-pair (dired-dups-md5-file-pair))
 	  (tobe-checked-pair (progn
 			       (shell-command (format "find %s -type f -exec md5sum {} \\;" dir))
-			       (dired-ext-md5-file-pair))))
+			       (dired-dups-md5-file-pair))))
       ;; find the matched files
       (dolist (pair marked-pair)
 	(mapc #'(lambda (arg)
@@ -129,7 +129,7 @@ duplicate files will be marked for deletion instead of the originals."
 		    (push (cdr pair) orignal-matched-files)
 		    (push (cdr arg) duplicated-matched-files))) tobe-checked-pair))
       
-      (dired-ext-kill-buffer "*Shell Command Output*"))
+      (dired-dups-kill-buffer "*Shell Command Output*"))
 
     (when (null duplicated-matched-files)
       ;; when there are no duplicated files, simply return to avoid the
@@ -189,7 +189,7 @@ duplicate files will be marked for deletion instead of the originals."
 					     (file-truename arg)))
 		       (dired-flag-file-deletion 1))))))))))
 
-(defun dired-ext-md5-file-pair ()
+(defun dired-dups-md5-file-pair nil
   "Get an alist of (md5 . file) in buffer *Shell Command Output*."
   (with-current-buffer "*Shell Command Output*"
     (goto-char (point-min))
@@ -205,7 +205,7 @@ duplicate files will be marked for deletion instead of the originals."
 	  (forward-line)))
       (nreverse lst))))
 
-(defun dired-ext-kill-buffer (name)
+(defun dired-dups-kill-buffer (name)
   "When a buffer with name NAME exists, kill it."
   (when (get-buffer name)
     (kill-buffer name)))
