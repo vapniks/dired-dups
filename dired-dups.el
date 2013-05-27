@@ -84,7 +84,7 @@
 ;;; Code:
 
 
-
+;;;###autoload
 (defun dired-find-duplicates (files dir)
   "Find duplicates of files and put them in a dired buffer.
 FILES is a list of files which will be compared. DIR is the directory
